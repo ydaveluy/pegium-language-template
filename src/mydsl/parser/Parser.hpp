@@ -7,18 +7,15 @@
 // the language your own; the AST in `mydsl/ast.hpp` and this grammar evolve
 // together.
 //
-// Equivalent Langium grammar shipped as the default:
+// The default grammar declares `Person` definitions and `Greeting`
+// statements that cross-reference one of the declared persons:
 //
-//   entry Model:
-//       (persons+=Person | greetings+=Greeting)*;
+//   entry Model: (Person | Greeting)*;
+//   Person:      'person' name=ID;
+//   Greeting:    'Hello' person=<Person> '!';
 //
-//   Person:  'person' name=ID;
-//   Greeting: 'Hello' person=[Person:ID] '!';
-//
-//   hidden terminal WS:         /\s+/;
-//   terminal ID:                /[_a-zA-Z][\w_]*/;
-//   hidden terminal ML_COMMENT: /\/\*[\s\S]*?\*\//;
-//   hidden terminal SL_COMMENT: /\/\/[^\n\r]*/;
+// where `ID` is `/[_a-zA-Z][\w_]*/`, whitespace is ignored, and `//` /
+// `/* */` comments are kept hidden in the CST.
 
 namespace mydsl::parser {
 

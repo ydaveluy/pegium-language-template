@@ -8,8 +8,8 @@ Use it as the starting point for your own language.
 A complete C++ project that:
 
 - builds against Pegium pulled in via `FetchContent` — no manual install
-- ships a tiny grammar (`Person` declarations + `Greeting` cross-references)
-  inspired by Langium's HelloWorld example
+- ships a tiny grammar with `Person` declarations and `Greeting`
+  cross-references
 - includes a CLI that parses a file, links cross-references, and prints a
   short summary
 - includes an LSP server with the default Pegium feature set
